@@ -10,9 +10,9 @@ var csv = new Converter({constructResult:false});
 
 var Bot = new Twit(twitterConfig);
 
-var obj = JSON.parse(fs.readFileSync('everyloto4w-index.json', 'utf8') || '{}');
+var obj = JSON.parse(fs.readFileSync(__dirname + '/everyloto4w-index.json', 'utf8') || '{}');
 var index = obj.index || 0;
-var addresses = JSON.parse(fs.readFileSync('o4wAddresses.json', 'utf8'));
+var addresses = JSON.parse(fs.readFileSync(__dirname + '/o4wAddresses.json', 'utf8'));
 
 var doTweet = function() {
   index++;
@@ -53,7 +53,7 @@ var doTweet = function() {
   });
 
   // save csv index
-  jsonfile.writeFile('everyloto4w-index.json', { 'index': index }, { spaces: 2 }, function(err) {
+  jsonfile.writeFile(__dirname + '/everyloto4w-index.json', { 'index': index }, { spaces: 2 }, function(err) {
     console.error(err);
   });
 }
